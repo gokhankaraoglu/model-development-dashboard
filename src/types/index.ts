@@ -123,21 +123,3 @@ export interface MockDB {
   governance: Record<string, Governance>;
   lineage: Record<string, TableLineage[]>;
 }
-
-export const StatusColors: Record<string, string> = {
-  Active: "#16a34a",
-  Review: "#f59e0b",
-  Approved: "#10b981",
-  Draft: "#6b7280",
-  Locked: "#ef4444",
-  Pending: "#f59e0b",
-  Rejected: "#ef4444",
-};
-
-export const RoleColors: Record<string, string> = {
-  lookup: "#3b82f6",
-  time_id: "#8b5cf6",
-  exog: "#10b981",
-  not_used: "#6b7280",
-  endog: "#f59e0b",
-};

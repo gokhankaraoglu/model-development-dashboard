@@ -11,7 +11,6 @@ export function PageContainer({
   children,
   fullWidth = false,
   className = "",
-  contentClassName = "",
 }: PageContainerProps) {
   const widthClasses = fullWidth ? "w-full" : "max-w-7xl w-full";
 
@@ -25,16 +24,7 @@ export function PageContainer({
       ].join(" ")}
     >
       <div className={[widthClasses, "flex flex-col gap-6"].join(" ")}>
-        <main
-          className={[
-            "flex-1",
-            "p-4 sm:p-6 lg:p-8",
-            "overflow-hidden",
-            contentClassName,
-          ].join(" ")}
-        >
-          {children}
-        </main>
+        <main className="flex flex-col gap-6">{children}</main>
       </div>
     </div>
   );

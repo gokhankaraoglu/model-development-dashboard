@@ -1,9 +1,9 @@
-import dayjs from "dayjs";
-import { StatusColors } from "../../../types";
+import { getStatusColor, getTypeColorClasses } from "../../../utils/formatters";
 import { ErrorMessage } from "../../ui/ErrorMessage";
 import { useProject } from "../../../hooks/useProjects";
 import { EmptyState } from "../../ui/EmptyState";
 import ProjectHeaderSkeleton from "./ProjectHeaderSkeleton";
+import { formatDate } from "../../../utils/date";
 
 export const ProjectHeader = () => {
   const { data: project, loading, error, refetch } = useProject("proj-001");
@@ -11,28 +11,6 @@ export const ProjectHeader = () => {
   if (loading) return <ProjectHeaderSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
   if (!project) return <EmptyState />;
-  const formatDate = (dateString: string) => {
-    return dayjs(dateString).format("MMM D, YYYY");
-  };
-
-  const getStatusColor = (status: string) => {
-    return StatusColors[status] || "#6b7280";
-  };
-
-  const getTypeColorClasses = (type: string) => {
-    switch (type) {
-      case "ML":
-        return "bg-blue-500";
-      case "TimeSeries":
-        return "bg-purple-500";
-      case "Scorecard":
-        return "bg-green-500";
-      case "AI":
-        return "bg-yellow-500";
-      default:
-        return "bg-blue-500";
-    }
-  };
 
   return (
     <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
@@ -50,10 +28,9 @@ export const ProjectHeader = () => {
               {project.project_type}
             </span>
             <span
-              className="inline-flex items-center px-3 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wide text-white"
-              style={{
-                backgroundColor: getStatusColor(project.status),
-              }}
+              className={`inline-flex items-center px-3 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wide text-white ${getStatusColor(
+                project.status
+              )}`}
             >
               {project.status}
             </span>
