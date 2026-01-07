@@ -1,21 +1,29 @@
 import { useCallback, useEffect, useState } from "react";
 
 export function useFetch<T>(fn: () => Promise<T>) {
-  const [data, setData] = useState<T | null>(null);
-  const [isLoading, setLoading] = useState<boolean>(true);
-  const [isError, setError] = useState<boolean>(false);
+  const [state, setState] = useState<{
+    loading: boolean;
+    error: string | null;
+    data: T | null;
+  }>({
+    loading: true,
+    error: null,
+    data: null,
+  });
 
   const fetchData = useCallback(async () => {
-    setLoading(true);
-    setError(false);
-
+    setState((s) => ({ ...s, loading: true, error: null }));
     try {
       const result = await fn();
-      setData(result);
-    } catch {
-      setError(true);
+      setState({ loading: false, error: null, data: result });
+    } catch (e: unknown) {
+      setState({
+        loading: false,
+        error: e instanceof Error ? e.message : String(e),
+        data: null,
+      });
     } finally {
-      setLoading(false);
+      setState((s) => ({ ...s, loading: false }));
     }
   }, [fn]);
 
@@ -24,9 +32,7 @@ export function useFetch<T>(fn: () => Promise<T>) {
   }, [fetchData]);
 
   return {
-    data,
-    isLoading,
-    isError,
+    ...state,
     refetch: fetchData,
   };
 }
