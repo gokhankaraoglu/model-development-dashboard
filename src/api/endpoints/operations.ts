@@ -6,7 +6,7 @@ export function getRecentOperations(projectId: string): Promise<Operation[]> {
   return api(async () => {
     const operations = mockDB.operations[projectId];
     if (!operations) {
-      return [];
+      throw new Error(`Governance data for project ${projectId} not found`);
     }
 
     return operations.slice(0, 10);

@@ -5,6 +5,8 @@ import { ErrorMessage } from "../../ui/ErrorMessage";
 import { useRecentOperations } from "../../../hooks/useOperations";
 import OperationsTimelineSkeleton from "./OperationsTimelineSkeleton";
 import { OperationGroup } from "./OperationGroup";
+import { useAppSelector } from "../../../store/hooks";
+import { selectedProjectId } from "../../../store/selectors";
 
 interface GroupedOperations {
   date: string;
@@ -12,12 +14,13 @@ interface GroupedOperations {
 }
 
 export const OperationsTimeline = () => {
+  const currentProjectId = useAppSelector(selectedProjectId);
   const {
     data: operations,
     loading,
     error,
     refetch,
-  } = useRecentOperations("proj-001");
+  } = useRecentOperations(currentProjectId);
 
   if (loading) return <OperationsTimelineSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;

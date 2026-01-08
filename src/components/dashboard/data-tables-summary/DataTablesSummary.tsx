@@ -4,14 +4,17 @@ import { EmptyState } from "../../ui/EmptyState";
 import { ErrorMessage } from "../../ui/ErrorMessage";
 import DataTablesSkeleton from "./DataTablesSkeleton";
 import { ExpandableRow } from "./ExpandableRow";
+import { useAppSelector } from "../../../store/hooks";
+import { selectedProjectId } from "../../../store/selectors";
 
 export const DataTablesSummary = () => {
+  const currentProjectId = useAppSelector(selectedProjectId);
   const {
     data: tables,
     loading,
     error,
     refetch,
-  } = useProjectTables("proj-001");
+  } = useProjectTables(currentProjectId);
 
   const [expandedTables, setExpandedTables] = useState<Set<string>>(new Set());
 

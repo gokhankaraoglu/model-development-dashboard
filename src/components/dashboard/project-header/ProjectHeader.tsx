@@ -4,9 +4,18 @@ import { useProject } from "../../../hooks/useProjects";
 import { EmptyState } from "../../ui/EmptyState";
 import ProjectHeaderSkeleton from "./ProjectHeaderSkeleton";
 import { formatDate } from "../../../utils/date";
+import { selectedProjectId } from "../../../store/selectors";
+import { useAppSelector } from "../../../store/hooks";
 
 export const ProjectHeader = () => {
-  const { data: project, loading, error, refetch } = useProject("proj-001");
+  const currentProjectId = useAppSelector(selectedProjectId);
+
+  const {
+    data: project,
+    loading,
+    error,
+    refetch,
+  } = useProject(currentProjectId);
 
   if (loading) return <ProjectHeaderSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
