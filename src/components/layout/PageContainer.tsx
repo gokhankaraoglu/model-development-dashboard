@@ -23,8 +23,8 @@ export function PageContainer({
         className,
       ].join(" ")}
     >
-      <div className={[widthClasses, "flex flex-col gap-6"].join(" ")}>
-        <main className="flex flex-col gap-6">{children}</main>
+      <div className={[widthClasses].join(" ")}>
+        <main className="grid grid-cols-2 gap-6 items-start">{children}</main>
       </div>
     </div>
   );

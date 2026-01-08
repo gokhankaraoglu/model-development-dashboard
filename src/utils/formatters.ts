@@ -30,3 +30,10 @@ const TypeColorClasses: Record<string, string> = {
 export const getTypeColorClasses = (type: string) => {
   return TypeColorClasses[type] ?? "bg-blue-500";
 };
+
+export const formatOperationName = (name: string) => {
+  return name
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};

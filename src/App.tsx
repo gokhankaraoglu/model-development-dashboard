@@ -1,14 +1,7 @@
-import { DataTablesSummary } from "./components/dashboard/data-tables-summary/DataTablesSummary";
-import { ProjectHeader } from "./components/dashboard/project-header/ProjectHeader";
-import PageContainer from "./components/layout/PageContainer";
+import { Dashboard } from "./pages/Dashboard";
 
 function App() {
-  return (
-    <PageContainer>
-      <ProjectHeader />
-      <DataTablesSummary />
-    </PageContainer>
-  );
+  return <Dashboard />;
 }
 
 export default App;
