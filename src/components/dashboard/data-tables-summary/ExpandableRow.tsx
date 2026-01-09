@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import type { ProjectTable } from "../../../types";
+import { TableTypes, type ProjectTable } from "../../../types";
 import { RoleColors } from "../../../utils/formatters";
 import { VersionHistoryModal } from "./VersionHistoryModal";
 
@@ -47,7 +47,7 @@ export const ExpandableRow: React.FC<ExpandableRowProps> = ({
         <td className="p-4 border-b border-gray-200 align-top">
           <span
             className={`px-2 py-1 rounded text-xs font-medium capitalize ${
-              table.table_type === "source"
+              table.table_type === TableTypes.SOURCE
                 ? "bg-blue-100 text-blue-800"
                 : "bg-green-100 text-green-700"
             }`}

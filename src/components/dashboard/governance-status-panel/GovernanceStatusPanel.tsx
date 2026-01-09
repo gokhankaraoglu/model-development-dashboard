@@ -4,10 +4,10 @@ import { StakeholderList } from "./StakeholderList";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
 import { useGovernance } from "../../../hooks/useGovernance";
-import DataTablesSkeleton from "../data-tables-summary/DataTablesSkeleton";
 import { ErrorMessage } from "../../ui/ErrorMessage";
 import { EmptyState } from "../../ui/EmptyState";
 import { DashboardCard } from "../../layout/DashboardCard";
+import { GovernanceStatusSkeleton } from "./GovernanceStatusSkeleton";
 
 export const GovernanceStatusPanel = () => {
   const currentProjectId = useAppSelector(selectedProjectId);
@@ -18,7 +18,7 @@ export const GovernanceStatusPanel = () => {
     refetch,
   } = useGovernance(currentProjectId);
 
-  if (loading) return <DataTablesSkeleton />;
+  if (loading) return <GovernanceStatusSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
   if (!governance) return <EmptyState />;
 

@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchProjects } from "../store/slices/projectSlice";
 import Loading from "../components/layout/Loading";
 import { GovernanceStatusPanel } from "../components/dashboard/governance-status-panel/GovernanceStatusPanel";
+import { DataLineageView } from "../components/dashboard/data-lineage-view/DataLineageView";
 
 export function Dashboard() {
   const dispatch = useAppDispatch();
@@ -41,8 +42,13 @@ export function Dashboard() {
       <DashboardSection>
         <OperationsTimeline />
       </DashboardSection>
+
       <DashboardSection>
         <GovernanceStatusPanel />
+      </DashboardSection>
+
+      <DashboardSection fullWidth>
+        <DataLineageView />
       </DashboardSection>
     </PageContainer>
   );

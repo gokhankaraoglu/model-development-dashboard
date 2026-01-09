@@ -48,7 +48,7 @@ export interface ProjectTable {
   project_table_id: string;
   table_name: string;
   display_name: string;
-  table_type: "source" | "derived";
+  table_type: TableType;
   current_version_id: string;
   versions: TableVersion[];
   columns: Column[];
@@ -123,3 +123,10 @@ export interface MockDB {
   governance: Record<string, Governance>;
   lineage: Record<string, TableLineage[]>;
 }
+
+export const TableTypes = {
+  SOURCE: "source",
+  DERIVED: "derived",
+} as const;
+
+export type TableType = (typeof TableTypes)[keyof typeof TableTypes];
