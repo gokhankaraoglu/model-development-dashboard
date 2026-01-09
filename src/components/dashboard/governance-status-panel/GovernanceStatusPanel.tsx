@@ -20,7 +20,13 @@ export const GovernanceStatusPanel = () => {
 
   if (loading) return <GovernanceStatusSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
-  if (!governance) return <EmptyState />;
+  if (!governance)
+    return (
+      <EmptyState
+        title="Governance overview"
+        message="No governance data available for this project."
+      />
+    );
 
   return (
     <DashboardCard title="Governance overview">

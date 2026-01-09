@@ -21,7 +21,14 @@ export const DataTablesSummary = () => {
 
   if (loading) return <DataTablesSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
-  if (!tables) return <EmptyState />;
+  if (!tables)
+    return (
+      <EmptyState
+        title="Data Tables Summary"
+        headerRight={<span className="text-gray-600">0 tables</span>}
+        message="No tables available for this project."
+      />
+    );
 
   const toggleExpand = (tableId: string) => {
     const newExpanded = new Set(expandedTables);

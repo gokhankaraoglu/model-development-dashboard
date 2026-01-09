@@ -25,21 +25,18 @@ export const OperationsTimeline = () => {
 
   if (loading) return <OperationsTimelineSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
-  if (!operations) return <EmptyState />;
-  if (operations.length === 0) {
+  if (!operations || operations.length === 0)
     return (
-      <DashboardCard
-        title="Recent Operations"
+      <EmptyState
+        title="Recent Operations Timeline"
         headerRight={
-          <span className="text-xs text-slate-500">0 operations</span>
+          <span className="text-xs sm:text-sm text-slate-500">
+            0 operations
+          </span>
         }
-      >
-        <p className="py-6 text-center italic text-slate-500">
-          No recent operations found.
-        </p>
-      </DashboardCard>
+        message="No recent operations found."
+      />
     );
-  }
 
   const groupedOperations = operations.reduce<GroupedOperations[]>(
     (groups, operation) => {

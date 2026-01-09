@@ -20,7 +20,13 @@ export const ProjectHeader = () => {
 
   if (loading) return <ProjectHeaderSkeleton />;
   if (error) return <ErrorMessage message={error} onRetry={refetch} />;
-  if (!project) return <EmptyState />;
+  if (!project)
+    return (
+      <EmptyState
+        title="Project overview"
+        message="No project selected or available."
+      />
+    );
 
   return (
     <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">

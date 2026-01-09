@@ -142,7 +142,25 @@ export const DataLineageView = () => {
     return <ErrorMessage message={relationsError} onRetry={refetchRelations} />;
   if (tablesError)
     return <ErrorMessage message={tablesError} onRetry={refetchTables} />;
-  if (!relations || !tables) return <EmptyState />;
+  if (!relations || !tables)
+    return (
+      <EmptyState
+        title="Data Lineage"
+        headerRight={
+          <div className="flex gap-5 text-xs text-gray-600">
+            <span className="inline-flex items-center gap-2">
+              <span className="h-4 w-4 rounded-md border-2 border-gray-200 bg-blue-100" />
+              Source tables
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <span className="h-4 w-4 rounded-md border-2 border-gray-200 bg-emerald-100" />
+              Derived tables
+            </span>
+          </div>
+        }
+        message="No tables available for lineage view."
+      />
+    );
 
   const handleTableClick = (tableName: string) => {
     setHighlightedTable((prev) => (prev === tableName ? null : tableName));
