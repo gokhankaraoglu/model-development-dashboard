@@ -6,6 +6,7 @@ import ProjectHeaderSkeleton from "./ProjectHeaderSkeleton";
 import { formatDate } from "../../../utils/date";
 import { selectedProjectId } from "../../../store/selectors";
 import { useAppSelector } from "../../../store/hooks";
+import { ProjectSwitcher } from "./ProjectSwitcher";
 
 export const ProjectHeader = () => {
   const currentProjectId = useAppSelector(selectedProjectId);
@@ -25,9 +26,17 @@ export const ProjectHeader = () => {
     <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
       <div className="flex justify-between items-start mb-6 flex-wrap gap-6">
         <div className="flex-1 min-w-75">
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">
-            {project.project_name}
-          </h1>
+          <div className="mb-2 text-sm text-gray-500 flex items-center gap-1">
+            <span className="font-medium text-gray-600">Projects</span>
+            <span className="text-gray-400">&gt;</span>
+            <span className="text-gray-700">{project.project_name}</span>
+          </div>
+          <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
+            <h1 className="text-3xl font-bold text-gray-900">
+              {project.project_name}
+            </h1>
+            <ProjectSwitcher />
+          </div>
           <div className="flex gap-2 flex-wrap">
             <span
               className={`inline-flex items-center px-3 py-1.5 rounded-md text-xs font-semibold uppercase tracking-wide text-white ${getTypeColorClasses(

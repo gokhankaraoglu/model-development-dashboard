@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { DataTablesSummary } from "../components/dashboard/data-tables-summary/DataTablesSummary";
 import { ProjectHeader } from "../components/dashboard/project-header/ProjectHeader";
 import PageContainer from "../components/layout/PageContainer";
+import { DashboardSection } from "../components/layout/DashboardSection";
 import { OperationsTimeline } from "../components/dashboard/operations-timeline/OperationsTimeline";
 import { globalError, globalLoading } from "../store/selectors";
-import Error from "../components/layout/ErrorFallback";
+import Error from "../components/layout/ErrorPage";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchProjects } from "../store/slices/projectSlice";
 import Loading from "../components/layout/Loading";
@@ -14,29 +15,31 @@ export function Dashboard() {
   const error = useAppSelector(globalError);
   const loading = useAppSelector(globalLoading);
 
+  const handleRetry = (): void => {
+    dispatch(fetchProjects());
+  };
+
   useEffect(() => {
-    void dispatch(fetchProjects());
+    dispatch(fetchProjects());
   }, [dispatch]);
 
-  if (loading) {
-    return <Loading />;
-  }
-  if (error)
-    return <Error error={error} reset={() => window.location.reload()} />;
+  if (loading) return <Loading />;
+
+  if (error) return <Error error={error} reset={handleRetry} />;
 
   return (
     <PageContainer>
-      <section className="col-span-2">
+      <DashboardSection fullWidth>
         <ProjectHeader />
-      </section>
+      </DashboardSection>
 
-      <section className="col-span-2">
+      <DashboardSection fullWidth>
         <DataTablesSummary />
-      </section>
+      </DashboardSection>
 
-      <section>
+      <DashboardSection>
         <OperationsTimeline />
-      </section>
+      </DashboardSection>
     </PageContainer>
   );
 }
