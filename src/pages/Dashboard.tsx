@@ -9,6 +9,7 @@ import Error from "../components/layout/ErrorPage";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchProjects } from "../store/slices/projectSlice";
 import Loading from "../components/layout/Loading";
+import { GovernanceStatusPanel } from "../components/dashboard/governance-status-panel/GovernanceStatusPanel";
 
 export function Dashboard() {
   const dispatch = useAppDispatch();
@@ -39,6 +40,9 @@ export function Dashboard() {
 
       <DashboardSection>
         <OperationsTimeline />
+      </DashboardSection>
+      <DashboardSection>
+        <GovernanceStatusPanel />
       </DashboardSection>
     </PageContainer>
   );

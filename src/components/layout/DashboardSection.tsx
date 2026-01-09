@@ -10,7 +10,7 @@ export function DashboardSection({
   fullWidth,
 }: DashboardSectionProps) {
   return (
-    <section className={fullWidth ? "col-span-2" : "col-span-1"}>
+    <section className={fullWidth ? "col-span-1 md:col-span-2" : "col-span-1"}>
       {children}
     </section>
   );

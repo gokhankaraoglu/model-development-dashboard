@@ -11,6 +11,7 @@ export interface ProjectState {
   selectedProjectId: string;
   loading: boolean;
   error: string | null;
+  isProjectModalOpen: boolean;
 }
 
 const initialState: ProjectState = {
@@ -18,6 +19,7 @@ const initialState: ProjectState = {
   selectedProjectId: "",
   loading: false,
   error: null,
+  isProjectModalOpen: true,
 };
 
 export const fetchProjects = createAsyncThunk(
@@ -33,6 +35,9 @@ const projectSlice = createSlice({
   reducers: {
     setSelectedProjectId(state, action: PayloadAction<string>) {
       state.selectedProjectId = action.payload;
+    },
+    setIsProjectModalOpen(state, action: PayloadAction<boolean>) {
+      state.isProjectModalOpen = action.payload;
     },
     clearProject: (state) => {
       state.projects = null;
@@ -59,6 +64,7 @@ const projectSlice = createSlice({
   },
 });
 
-export const { setSelectedProjectId, clearProject } = projectSlice.actions;
+export const { setSelectedProjectId, setIsProjectModalOpen, clearProject } =
+  projectSlice.actions;
 
 export default projectSlice.reducer;

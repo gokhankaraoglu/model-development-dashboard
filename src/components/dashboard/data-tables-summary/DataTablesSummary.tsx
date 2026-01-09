@@ -6,6 +6,7 @@ import DataTablesSkeleton from "./DataTablesSkeleton";
 import { ExpandableRow } from "./ExpandableRow";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
+import { DashboardCard } from "../../layout/DashboardCard";
 
 export const DataTablesSummary = () => {
   const currentProjectId = useAppSelector(selectedProjectId);
@@ -42,22 +43,20 @@ export const DataTablesSummary = () => {
   ];
 
   return (
-    <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
-      <div className="flex justify-between items-center mb-6 pb-3 border-b-2 border-gray-100">
-        <h2 className="text-2xl font-bold text-gray-900">
-          Data Tables Summary
-        </h2>
+    <DashboardCard
+      title="Data Tables Summary"
+      headerRight={
         <span className="text-gray-600">{tables.length} tables</span>
-      </div>
-
+      }
+    >
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse mt-4">
+        <table className="mt-4 w-full border-collapse">
           <thead>
             <tr>
               {columns.map((label) => (
                 <th
                   key={label}
-                  className="bg-gray-100 p-4 text-left font-semibold text-gray-900 border-b-2 border-gray-200 text-sm"
+                  className="bg-gray-100 p-4 text-left text-sm font-semibold text-gray-900 border-b-2 border-gray-200"
                 >
                   {label}
                 </th>
@@ -76,6 +75,6 @@ export const DataTablesSummary = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </DashboardCard>
   );
 };

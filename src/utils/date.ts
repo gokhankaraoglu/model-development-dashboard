@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 
-export const formatDate = (dateString: string) => {
+export const formatDate = (dateString?: string) => {
+  if (!dateString) return "N/A";
   return dayjs(dateString).format("MMM D, YYYY");
 };
 

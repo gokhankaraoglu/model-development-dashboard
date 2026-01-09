@@ -5,3 +5,5 @@ export const selectedProjectId = (state: RootState) =>
 export const globalError = (state: RootState) => state.project.error;
 export const globalLoading = (state: RootState) => state.project.loading;
 export const allProjects = (state: RootState) => state.project.projects;
+export const isOpenProjectModal = (state: RootState) =>
+  state.project.isProjectModalOpen;

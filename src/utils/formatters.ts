@@ -1,3 +1,5 @@
+import type { Approval, ComplianceChecklist } from "../types";
+
 export const StatusColors: Record<string, string> = {
   Active: "bg-emerald-500",
   Review: "bg-amber-500",
@@ -36,4 +38,44 @@ export const formatOperationName = (name: string) => {
     .split("_")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
+};
+
+export const getApprovalIcon = (status: Approval["status"]) => {
+  switch (status) {
+    case "Pending":
+      return "⏳";
+    case "Approved":
+      return "✅";
+    case "Rejected":
+      return "❌";
+    default:
+      return "❓";
+  }
+};
+
+export const getStatusColorClass = (status: Approval["status"]) => {
+  switch (status) {
+    case "Approved":
+      return "text-emerald-600 bg-emerald-50 ring-emerald-100";
+    case "Rejected":
+      return "text-red-600 bg-red-50 ring-red-100";
+    case "Pending":
+    default:
+      return "text-amber-600 bg-amber-50 ring-amber-100";
+  }
+};
+
+export const getComplianceStatusColorClass = (
+  status: ComplianceChecklist["status"]
+) => {
+  switch (status) {
+    case "completed":
+      return "bg-emerald-500";
+    case "in_progress":
+      return "bg-amber-500";
+    case "not_started":
+      return "bg-gray-500";
+    default:
+      return "bg-gray-500";
+  }
 };
