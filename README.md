@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# Model Development Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+Model Development Dashboard is a React- and TypeScript-based web application for tracking the lifecycle of data and machine learning projects. It provides a unified view of project metadata, governance status, operational events, and data lineage. Teams can use it to quickly understand the state of a project, inspect recent operations, and ensure governance and compliance requirements are met.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## React Compiler
+- [Model Development Dashboard](#model-development-dashboard)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation Instructions](#installation-instructions)
+    - [Prerequisites](#prerequisites)
+    - [Clone the repository](#clone-the-repository)
+    - [Install dependencies](#install-dependencies)
+    - [Run the development server](#run-the-development-server)
+    - [Build for production](#build-for-production)
+  - [Usage](#usage)
+  - [Features](#features)
+  - [Acknowledgments](#acknowledgments)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Installation Instructions
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (v25.1.0 recommended)
+- npm (comes with Node.js) or an alternative package manager such as pnpm or yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Clone the repository
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/gokhankaraoglu/model-development-dashboard
+cd model-development-dashboard
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Using yarn:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn
+```
+
+Or with npm:
+
+```bash
+npm install
+```
+
+### Run the development server
+
+```bash
+yarn dev
+```
+
+By default, Vite will start the app on a local port (commonly http://localhost:5173).
+
+### Build for production
+
+```bash
+yarn build
+```
+
+This command compiles the TypeScript and bundles the application into the dist directory.
+
+## Usage
+
+Once the development server is running:
+
+1. Open the app in your browser.
+2. Select a project in the project header to view its details.
+3. Explore the main dashboard sections:
+   - Project overview: key metadata such as owner, governance manager, status, and objectives.
+   - Data tables summary: a high-level view of project-related tables.
+   - Governance status: approvals, compliance checklist, and stakeholders.
+   - Operations timeline: recent operational events grouped by date.
+   - Data lineage view: a visual representation of data flow between tables.
+
+## Features
+
+- **Project-centric overview**: See project metadata, ownership, governance contacts, and objectives in one place.
+- **Operations timeline**: View recent operations, grouped by day, and open a modal to browse and filter all operations by title or date.
+- **Governance status panel**: Track approvals, compliance items, and key stakeholders.
+- **Data lineage visualization**: Inspect how data moves between source and derived tables in the project.
+- **Responsive layout**: Card-based layout built with React and Tailwind CSS, optimized for modern browsers.
+- **Type-safe store**: State management powered by Redux Toolkit and TypeScript.
+
+## Acknowledgments
+
+- Built with [React](https://react.dev/), [TypeScript](https://www.typescriptlang.org/), and [Vite](https://vite.dev/).
+- UI styling powered by [Tailwind CSS](https://tailwindcss.com/).
+- State management using [Redux Toolkit](https://redux-toolkit.js.org/).
+- Date handling powered by [dayjs](https://day.js.org/).
+
+```
+
 ```
