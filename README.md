@@ -86,6 +86,7 @@ Once the development server is running:
 - **Data lineage visualization**: Inspect how data moves between source and derived tables in the project.
 - **Responsive layout**: Card-based layout built with React and Tailwind CSS, optimized for modern browsers.
 - **Type-safe store**: State management powered by Redux Toolkit and TypeScript.
+- **Robust error handling**: Global and per-section error boundaries using [react-error-boundary](https://github.com/bvaughn/react-error-boundary) ensure unexpected crashes are caught and rendered as friendly error screens, while expected data-loading errors show inline messages with retry.
 
 ## Acknowledgments
 

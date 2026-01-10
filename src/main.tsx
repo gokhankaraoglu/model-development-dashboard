@@ -3,9 +3,12 @@ import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App.tsx";
 import { store } from "./store/store";
+import { GlobalErrorBoundary } from "./components/layout/GlobalErrorBoundary";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
-    <App />
+    <GlobalErrorBoundary>
+      <App />
+    </GlobalErrorBoundary>
   </Provider>
 );

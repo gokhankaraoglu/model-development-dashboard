@@ -11,6 +11,7 @@ import { fetchProjects } from "../store/slices/projectSlice";
 import Loading from "../components/layout/Loading";
 import { GovernanceStatusPanel } from "../components/dashboard/governance-status-panel/GovernanceStatusPanel";
 import { DataLineageView } from "../components/dashboard/data-lineage-view/DataLineageView";
+import SectionErrorBoundary from "../components/layout/SectionErrorBoundary";
 
 export function Dashboard() {
   const dispatch = useAppDispatch();
@@ -32,23 +33,33 @@ export function Dashboard() {
   return (
     <PageContainer>
       <DashboardSection fullWidth>
-        <ProjectHeader />
+        <SectionErrorBoundary sectionName="Project header">
+          <ProjectHeader />
+        </SectionErrorBoundary>
       </DashboardSection>
 
       <DashboardSection fullWidth>
-        <DataTablesSummary />
+        <SectionErrorBoundary sectionName="Data tables summary">
+          <DataTablesSummary />
+        </SectionErrorBoundary>
       </DashboardSection>
 
       <DashboardSection>
-        <OperationsTimeline />
+        <SectionErrorBoundary sectionName="Operations timeline">
+          <OperationsTimeline />
+        </SectionErrorBoundary>
       </DashboardSection>
 
       <DashboardSection>
-        <GovernanceStatusPanel />
+        <SectionErrorBoundary sectionName="Governance status">
+          <GovernanceStatusPanel />
+        </SectionErrorBoundary>
       </DashboardSection>
 
       <DashboardSection fullWidth>
-        <DataLineageView />
+        <SectionErrorBoundary sectionName="Data lineage view">
+          <DataLineageView />
+        </SectionErrorBoundary>
       </DashboardSection>
     </PageContainer>
   );
