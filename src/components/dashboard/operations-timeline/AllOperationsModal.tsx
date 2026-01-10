@@ -47,7 +47,7 @@ export function AllOperationsModal({ operations }: AllOperationsModalProps) {
 
   return (
     <>
-      <div className="flex justify-center border-t border-slate-200 pt-3">
+      <div className="flex justify-center pt-3">
         <button
           type="button"
           onClick={() => setIsOpen(true)}

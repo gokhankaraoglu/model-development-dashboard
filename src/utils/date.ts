@@ -19,6 +19,6 @@ export const formatRelativeDate = (dateString: string) => {
   } else if (date.isSame(yesterday, "day")) {
     return "Yesterday";
   } else {
-    return date.format("MMM D");
+    return date.format("MMM D YYYY");
   }
 };

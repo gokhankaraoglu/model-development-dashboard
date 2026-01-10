@@ -39,7 +39,9 @@ export const OperationsTimeline = () => {
       />
     );
 
-  const groupedOperations = operations.reduce<GroupedOperations[]>(
+  const recentOperations = operations.slice(0, 10);
+
+  const groupedOperations = recentOperations.reduce<GroupedOperations[]>(
     (groups, operation) => {
       const dateKey = dayjs(operation.execution_timestamp)
         .startOf("day")
@@ -66,7 +68,7 @@ export const OperationsTimeline = () => {
       title="Recent Operations Timeline"
       headerRight={
         <span className="text-xs sm:text-sm text-slate-500">
-          Last {operations.length} operations
+          Last {recentOperations.length} operations
         </span>
       }
     >

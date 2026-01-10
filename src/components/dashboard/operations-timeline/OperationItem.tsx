@@ -65,17 +65,19 @@ export const OperationItem = ({ operation }: OperationItemProps) => {
         {operation.input_parameters &&
           Object.keys(operation.input_parameters).length > 0 && (
             <div className="mt-2 flex flex-wrap gap-2 text-xs">
-              {Object.entries(operation.input_parameters).map(([key, value]) => (
-                <span
-                  key={key}
-                  className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5"
-                >
-                  <span className="font-medium text-slate-700">{key}:</span>
-                  <code className="text-[11px] text-slate-600">
-                    {String(value)}
-                  </code>
-                </span>
-              ))}
+              {Object.entries(operation.input_parameters).map(
+                ([key, value]) => (
+                  <span
+                    key={key}
+                    className="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5"
+                  >
+                    <span className="font-medium text-slate-700">{key}:</span>
+                    <code className="text-[11px] text-slate-600">
+                      {String(value)}
+                    </code>
+                  </span>
+                )
+              )}
             </div>
           )}
       </div>

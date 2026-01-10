@@ -9,6 +9,6 @@ export function getRecentOperations(projectId: string): Promise<Operation[]> {
       return [];
     }
 
-    return operations.slice(0, 10);
+    return operations;
   });
 }
