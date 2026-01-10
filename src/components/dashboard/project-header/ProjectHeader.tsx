@@ -5,10 +5,12 @@ import { EmptyState } from "../../ui/EmptyState";
 import ProjectHeaderSkeleton from "./ProjectHeaderSkeleton";
 import { formatDate } from "../../../utils/date";
 import { selectedProjectId } from "../../../store/selectors";
-import { useAppSelector } from "../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { setIsProjectModalOpen } from "../../../store/slices/projectSlice";
 import { ProjectSwitcher } from "./ProjectSwitcher";
 
 export const ProjectHeader = () => {
+  const dispatch = useAppDispatch();
   const currentProjectId = useAppSelector(selectedProjectId);
 
   const {
@@ -33,7 +35,12 @@ export const ProjectHeader = () => {
       <div className="flex justify-between items-start mb-6 flex-wrap gap-6">
         <div className="flex-1 min-w-75">
           <div className="mb-2 text-sm text-gray-500 flex items-center gap-1">
-            <span className="font-medium text-gray-600">Projects</span>
+            <span
+              className="font-medium text-gray-600 cursor-pointer hover:underline"
+              onClick={() => dispatch(setIsProjectModalOpen(true))}
+            >
+              Projects
+            </span>
             <span className="text-gray-400">&gt;</span>
             <span className="text-gray-700">{project.project_name}</span>
           </div>
