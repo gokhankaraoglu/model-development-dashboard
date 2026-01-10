@@ -4,6 +4,8 @@
 
 Model Development Dashboard is a React- and TypeScript-based web application for tracking the lifecycle of data and machine learning projects. It provides a unified view of project metadata, governance status, operational events, and data lineage. Teams can use it to quickly understand the state of a project, inspect recent operations, and ensure governance and compliance requirements are met.
 
+**Live demo:** https://model-development-dashboard.netlify.app/
+
 ## Table of Contents
 
 - [Model Development Dashboard](#model-development-dashboard)
