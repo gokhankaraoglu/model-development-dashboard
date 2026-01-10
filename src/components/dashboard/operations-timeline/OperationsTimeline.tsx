@@ -8,6 +8,7 @@ import { OperationGroup } from "./OperationGroup";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
 import { DashboardCard } from "../../layout/DashboardCard";
+import { AllOperationsModal } from "./AllOperationsModal";
 
 interface GroupedOperations {
   date: string;
@@ -79,13 +80,7 @@ export const OperationsTimeline = () => {
         ))}
       </div>
 
-      {operations.length >= 10 && (
-        <div className="flex justify-center border-t border-slate-200 pt-3">
-          <button className="inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs sm:text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50">
-            View All Operations
-          </button>
-        </div>
-      )}
+      {operations.length > 0 && <AllOperationsModal operations={operations} />}
     </DashboardCard>
   );
 };

@@ -23,7 +23,7 @@ export function VersionHistoryModal({
           className="bg-transparent border-none text-2xl cursor-pointer text-gray-500"
           onClick={onClose}
         >
-          &times;
+          ×
         </button>
       </div>
       <div className="flex flex-col gap-4 max-h-[60vh] overflow-y-auto">
