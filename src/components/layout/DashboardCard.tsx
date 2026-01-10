@@ -15,7 +15,7 @@ export function DashboardCard({
 }: DashboardCardProps) {
   return (
     <section
-      className={`bg-white rounded-xl p-6 shadow-md border border-gray-200 ${className}`}
+      className={`h-full flex flex-col rounded-xl p-6 shadow-md border border-gray-200 bg-white ${className}`}
     >
       <div className="flex justify-between items-center mb-6 pb-3 border-b-2 border-gray-100">
         <h2 className="text-xl font-bold text-gray-900">{title}</h2>

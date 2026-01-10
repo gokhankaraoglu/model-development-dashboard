@@ -24,7 +24,7 @@ export function PageContainer({
       ].join(" ")}
     >
       <div className={[widthClasses].join(" ")}>
-        <main className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <main className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           {children}
         </main>
       </div>
