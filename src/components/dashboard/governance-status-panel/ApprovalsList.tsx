@@ -6,7 +6,7 @@ interface ApprovalsListProps {
   approvals: Approval[];
 }
 
-export function ApprovalsList({ approvals }: ApprovalsListProps) {
+export const ApprovalsList = ({ approvals }: ApprovalsListProps) => {
   const pendingCount = approvals.filter((a) => a.status === "Pending").length;
 
   return (
@@ -96,6 +96,4 @@ export function ApprovalsList({ approvals }: ApprovalsListProps) {
       )}
     </div>
   );
-}
-
-export default ApprovalsList;
+};

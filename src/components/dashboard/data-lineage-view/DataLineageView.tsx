@@ -3,7 +3,7 @@ import { TableTypes, type ProjectTable } from "../../../types";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
 import { DashboardCard } from "../../layout";
-import { DataLineageSkeleton } from "./DataLineageSkeleton";
+import { DataLineageSkeleton } from ".";
 import { EmptyState, ErrorMessage } from "../../ui";
 import { useProjectTables, useTableRelations } from "../../../hooks";
 

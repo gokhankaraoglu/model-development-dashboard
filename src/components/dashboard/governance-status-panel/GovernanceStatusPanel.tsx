@@ -1,9 +1,11 @@
-import { ApprovalsList } from "./ApprovalsList";
-import { ComplianceChecklist } from "./ComplianceChecklist";
-import { StakeholderList } from "./StakeholderList";
+import {
+  ApprovalsList,
+  ComplianceChecklist,
+  StakeholderList,
+  GovernanceStatusSkeleton,
+} from ".";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
-import { GovernanceStatusSkeleton } from "./GovernanceStatusSkeleton";
 import { useGovernance } from "../../../hooks";
 import { EmptyState, ErrorMessage } from "../../ui";
 import { DashboardCard } from "../../layout";

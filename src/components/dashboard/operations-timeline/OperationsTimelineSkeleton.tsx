@@ -1,6 +1,6 @@
 import { Skeleton } from "../../ui";
 
-export default function OperationsTimelineSkeleton() {
+export const OperationsTimelineSkeleton = () => {
   return (
     <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200 space-y-6">
       <div className="flex justify-between items-center pb-3 border-b border-slate-200">
@@ -50,4 +50,4 @@ export default function OperationsTimelineSkeleton() {
       </div>
     </div>
   );
-}
+};

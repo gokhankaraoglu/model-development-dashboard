@@ -11,7 +11,7 @@ import {
 } from "../../../store/slices/projectSlice";
 import { Modal } from "../../layout";
 
-export function ProjectSwitcher() {
+export const ProjectSwitcher = () => {
   const dispatch = useAppDispatch();
   const currentProjectId = useAppSelector(selectedProjectId);
   const isOpen = useAppSelector(isOpenProjectModal);
@@ -110,6 +110,6 @@ export function ProjectSwitcher() {
       )}
     </>
   );
-}
+};
 
 export default ProjectSwitcher;

@@ -1,8 +1,7 @@
-import ProjectHeaderSkeleton from "./ProjectHeaderSkeleton";
+import { ProjectHeaderSkeleton, ProjectSwitcher } from ".";
 import { selectedProjectId } from "../../../store/selectors";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setIsProjectModalOpen } from "../../../store/slices/projectSlice";
-import { ProjectSwitcher } from "./ProjectSwitcher";
 import { useProject } from "../../../hooks";
 import { EmptyState, ErrorMessage } from "../../ui";
 import {

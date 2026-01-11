@@ -1,8 +1,8 @@
-import { DataLineageView } from "./data-lineage-view/DataLineageView";
-import { GovernanceStatusPanel } from "./governance-status-panel/GovernanceStatusPanel";
-import { OperationsTimeline } from "./operations-timeline/OperationsTimeline";
-import { DataTablesSummary } from "./data-tables-summary/DataTablesSummary";
-import { ProjectHeader } from "./project-header/ProjectHeader";
+import { DataLineageView } from "./data-lineage-view";
+import { GovernanceStatusPanel } from "./governance-status-panel";
+import { OperationsTimeline } from "./operations-timeline";
+import { DataTablesSummary } from "./data-tables-summary";
+import { ProjectHeader } from "./project-header";
 
 export {
   DataLineageView,

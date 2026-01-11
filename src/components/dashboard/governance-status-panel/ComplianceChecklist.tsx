@@ -5,7 +5,9 @@ interface ComplianceChecklistProps {
   checklist: ComplianceChecklistType;
 }
 
-export function ComplianceChecklist({ checklist }: ComplianceChecklistProps) {
+export const ComplianceChecklist = ({
+  checklist,
+}: ComplianceChecklistProps) => {
   const badgeColorClass = getComplianceStatusColorClass(checklist.status);
 
   return (
@@ -53,6 +55,4 @@ export function ComplianceChecklist({ checklist }: ComplianceChecklistProps) {
       </div>
     </div>
   );
-}
-
-export default ComplianceChecklist;
+};

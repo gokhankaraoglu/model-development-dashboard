@@ -1,11 +1,13 @@
 import dayjs from "dayjs";
 import type { Operation } from "../../../types";
 import { useRecentOperations } from "../../../hooks/useOperations";
-import OperationsTimelineSkeleton from "./OperationsTimelineSkeleton";
-import { OperationGroup } from "./OperationGroup";
+import {
+  OperationsTimelineSkeleton,
+  AllOperationsModal,
+  OperationGroup,
+} from ".";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
-import { AllOperationsModal } from "./AllOperationsModal";
 import { EmptyState, ErrorMessage } from "../../ui";
 import { DashboardCard } from "../../layout";
 

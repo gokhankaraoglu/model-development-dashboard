@@ -1,6 +1,6 @@
 import { Skeleton } from "../../ui";
 
-export default function DataTablesSkeleton() {
+export const DataTablesSkeleton = () => {
   return (
     <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200">
       <div className="flex justify-between items-center mb-6 pb-3 border-b-2 border-gray-100">
@@ -69,4 +69,4 @@ export default function DataTablesSkeleton() {
       </div>
     </div>
   );
-}
+};

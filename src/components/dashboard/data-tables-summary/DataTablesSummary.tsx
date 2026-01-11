@@ -1,6 +1,5 @@
 import { useState } from "react";
-import DataTablesSkeleton from "./DataTablesSkeleton";
-import { ExpandableRow } from "./ExpandableRow";
+import { DataTablesSkeleton, ExpandableRow } from ".";
 import { selectedProjectId } from "../../../store/selectors";
 import { useAppSelector } from "../../../store/hooks";
 import { useProjectTables } from "../../../hooks";

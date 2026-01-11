@@ -1,6 +1,6 @@
 import { Skeleton } from "../../ui";
 
-export default function ProjectHeaderSkeleton() {
+export const ProjectHeaderSkeleton = () => {
   return (
     <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
       <div className="flex justify-between items-start mb-6 flex-wrap gap-6">
@@ -48,4 +48,4 @@ export default function ProjectHeaderSkeleton() {
       </div>
     </div>
   );
-}
+};
