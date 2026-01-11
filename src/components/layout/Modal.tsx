@@ -1,4 +1,4 @@
-import { useEffect, type MouseEvent, type ReactNode } from "react";
+import { type MouseEvent, type ReactNode } from "react";
 
 export type ModalProps = {
   isOpen?: boolean;
@@ -15,17 +15,6 @@ export function Modal({
   maxWidthClass = "max-w-lg",
   className = "",
 }: ModalProps) {
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-    };
-  }, [isOpen]);
-
   if (!isOpen) return null;
 
   const handleOverlayClick = () => {

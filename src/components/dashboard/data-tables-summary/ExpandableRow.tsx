@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TableTypes, type ProjectTable } from "../../../types";
-import { RoleColors } from "../../../utils/formatters";
+import { RoleColors } from "../../../utils";
 import { VersionHistoryModal } from "./VersionHistoryModal";
 
 export interface ExpandableRowProps {

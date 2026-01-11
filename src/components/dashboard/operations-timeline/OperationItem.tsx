@@ -1,6 +1,5 @@
 import type { Operation } from "../../../types";
-import { formatTime } from "../../../utils/date";
-import { formatOperationName } from "../../../utils/formatters";
+import { formatOperationName, formatTime } from "../../../utils";
 
 interface OperationItemProps {
   operation: Operation;

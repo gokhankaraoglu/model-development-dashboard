@@ -9,7 +9,7 @@ import {
   setSelectedProjectId,
   setIsProjectModalOpen,
 } from "../../../store/slices/projectSlice";
-import { Modal } from "../../layout/Modal";
+import { Modal } from "../../layout";
 
 export function ProjectSwitcher() {
   const dispatch = useAppDispatch();

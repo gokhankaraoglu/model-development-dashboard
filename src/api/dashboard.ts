@@ -1,8 +1,11 @@
-import { getProjects, getProject } from "./endpoints/projects";
-import { getProjectTables } from "./endpoints/tables";
-import { getRecentOperations } from "./endpoints/operations";
-import { getGovernance } from "./endpoints/governances";
-import { getTableRelations } from "./endpoints/relations";
+import {
+  getGovernance,
+  getProject,
+  getProjects,
+  getProjectTables,
+  getRecentOperations,
+  getTableRelations,
+} from "./endpoints";
 
 export const DashboardAPI = {
   getProjects,

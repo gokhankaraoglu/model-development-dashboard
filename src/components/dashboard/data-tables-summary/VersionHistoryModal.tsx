@@ -1,6 +1,6 @@
 import type { TableVersion } from "../../../types";
-import { formatDate } from "../../../utils/date";
-import { Modal } from "../../layout/Modal";
+import { formatDate } from "../../../utils";
+import { Modal } from "../../layout";
 
 export interface VersionHistoryModalProps {
   versions: TableVersion[];

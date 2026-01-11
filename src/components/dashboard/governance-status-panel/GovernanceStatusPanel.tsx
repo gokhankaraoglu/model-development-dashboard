@@ -3,11 +3,10 @@ import { ComplianceChecklist } from "./ComplianceChecklist";
 import { StakeholderList } from "./StakeholderList";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
-import { useGovernance } from "../../../hooks/useGovernance";
-import { ErrorMessage } from "../../ui/ErrorMessage";
-import { EmptyState } from "../../ui/EmptyState";
-import { DashboardCard } from "../../layout/DashboardCard";
 import { GovernanceStatusSkeleton } from "./GovernanceStatusSkeleton";
+import { useGovernance } from "../../../hooks";
+import { EmptyState, ErrorMessage } from "../../ui";
+import { DashboardCard } from "../../layout";
 
 export const GovernanceStatusPanel = () => {
   const currentProjectId = useAppSelector(selectedProjectId);

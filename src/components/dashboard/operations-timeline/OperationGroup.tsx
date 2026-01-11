@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import type { Operation } from "../../../types";
-import { formatRelativeDate } from "../../../utils/date";
+import { formatRelativeDate } from "../../../utils";
 import { OperationItem } from "./OperationItem";
 
 interface OperationGroupProps {

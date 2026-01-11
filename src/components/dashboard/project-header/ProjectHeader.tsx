@@ -1,13 +1,15 @@
-import { getStatusColor, getTypeColorClasses } from "../../../utils/formatters";
-import { ErrorMessage } from "../../ui/ErrorMessage";
-import { useProject } from "../../../hooks/useProjects";
-import { EmptyState } from "../../ui/EmptyState";
 import ProjectHeaderSkeleton from "./ProjectHeaderSkeleton";
-import { formatDate } from "../../../utils/date";
 import { selectedProjectId } from "../../../store/selectors";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { setIsProjectModalOpen } from "../../../store/slices/projectSlice";
 import { ProjectSwitcher } from "./ProjectSwitcher";
+import { useProject } from "../../../hooks";
+import { EmptyState, ErrorMessage } from "../../ui";
+import {
+  formatDate,
+  getStatusColor,
+  getTypeColorClasses,
+} from "../../../utils";
 
 export const ProjectHeader = () => {
   const dispatch = useAppDispatch();

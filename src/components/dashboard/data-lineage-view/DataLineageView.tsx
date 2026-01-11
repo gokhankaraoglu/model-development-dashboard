@@ -2,12 +2,10 @@ import { useEffect, useState, type JSX } from "react";
 import { TableTypes, type ProjectTable } from "../../../types";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
-import { useTableRelations } from "../../../hooks/useRelations";
-import { useProjectTables } from "../../../hooks/useTables";
-import { ErrorMessage } from "../../ui/ErrorMessage";
-import { EmptyState } from "../../ui/EmptyState";
-import { DashboardCard } from "../../layout/DashboardCard";
+import { DashboardCard } from "../../layout";
 import { DataLineageSkeleton } from "./DataLineageSkeleton";
+import { EmptyState, ErrorMessage } from "../../ui";
+import { useProjectTables, useTableRelations } from "../../../hooks";
 
 interface Position {
   x: number;

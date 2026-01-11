@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ErrorBoundary, type FallbackProps } from "react-error-boundary";
-import { ErrorMessage } from "../ui/ErrorMessage";
+import { ErrorMessage } from "../ui";
 
 export interface SectionErrorBoundaryProps {
   children: ReactNode;

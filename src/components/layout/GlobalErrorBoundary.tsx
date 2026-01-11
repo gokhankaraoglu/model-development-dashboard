@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ErrorBoundary, type FallbackProps } from "react-error-boundary";
-import ErrorPage from "./ErrorPage";
+import { ErrorPage } from ".";
 
 interface GlobalErrorBoundaryProps {
   children: ReactNode;

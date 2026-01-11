@@ -3,8 +3,8 @@ import {
   createSlice,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import { getProjects } from "../../api/endpoints/projects";
 import type { Project } from "../../types";
+import { getProjects } from "../../api/endpoints";
 
 export interface ProjectState {
   projects: null | Project[];

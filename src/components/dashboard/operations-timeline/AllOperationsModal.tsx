@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import dayjs from "dayjs";
 import type { Operation } from "../../../types";
-import { Modal } from "../../layout/Modal";
 import { OperationItem } from "./OperationItem";
+import { Modal } from "../../layout";
 
 interface AllOperationsModalProps {
   operations: Operation[];

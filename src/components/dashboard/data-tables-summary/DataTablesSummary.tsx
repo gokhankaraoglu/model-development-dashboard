@@ -1,12 +1,11 @@
 import { useState } from "react";
-import { useProjectTables } from "../../../hooks/useTables";
-import { EmptyState } from "../../ui/EmptyState";
-import { ErrorMessage } from "../../ui/ErrorMessage";
 import DataTablesSkeleton from "./DataTablesSkeleton";
 import { ExpandableRow } from "./ExpandableRow";
-import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
-import { DashboardCard } from "../../layout/DashboardCard";
+import { useAppSelector } from "../../../store/hooks";
+import { useProjectTables } from "../../../hooks";
+import { EmptyState, ErrorMessage } from "../../ui";
+import { DashboardCard } from "../../layout";
 
 export const DataTablesSummary = () => {
   const currentProjectId = useAppSelector(selectedProjectId);

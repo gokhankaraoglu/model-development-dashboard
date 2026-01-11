@@ -1,17 +1,21 @@
 import { useEffect } from "react";
-import { DataTablesSummary } from "../components/dashboard/data-tables-summary/DataTablesSummary";
-import { ProjectHeader } from "../components/dashboard/project-header/ProjectHeader";
-import PageContainer from "../components/layout/PageContainer";
-import { DashboardSection } from "../components/layout/DashboardSection";
-import { OperationsTimeline } from "../components/dashboard/operations-timeline/OperationsTimeline";
 import { globalError, globalLoading } from "../store/selectors";
-import Error from "../components/layout/ErrorPage";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchProjects } from "../store/slices/projectSlice";
-import Loading from "../components/layout/Loading";
-import { GovernanceStatusPanel } from "../components/dashboard/governance-status-panel/GovernanceStatusPanel";
-import { DataLineageView } from "../components/dashboard/data-lineage-view/DataLineageView";
-import SectionErrorBoundary from "../components/layout/SectionErrorBoundary";
+import {
+  DataLineageView,
+  DataTablesSummary,
+  GovernanceStatusPanel,
+  OperationsTimeline,
+  ProjectHeader,
+} from "../components/dashboard";
+import {
+  DashboardSection,
+  ErrorPage,
+  Loading,
+  PageContainer,
+  SectionErrorBoundary,
+} from "../components/layout";
 
 export function Dashboard() {
   const dispatch = useAppDispatch();
@@ -28,7 +32,7 @@ export function Dashboard() {
 
   if (loading) return <Loading />;
 
-  if (error) return <Error error={error} reset={handleRetry} />;
+  if (error) return <ErrorPage error={error} reset={handleRetry} />;
 
   return (
     <PageContainer>

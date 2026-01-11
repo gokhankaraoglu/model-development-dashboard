@@ -1,5 +1,5 @@
 import type { ComplianceChecklist as ComplianceChecklistType } from "../../../types";
-import { getComplianceStatusColorClass } from "../../../utils/formatters";
+import { getComplianceStatusColorClass } from "../../../utils";
 
 interface ComplianceChecklistProps {
   checklist: ComplianceChecklistType;

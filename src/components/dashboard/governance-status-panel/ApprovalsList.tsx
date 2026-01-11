@@ -1,9 +1,6 @@
 import { formatDate } from "../../../utils/date";
 import type { Approval } from "../../../types";
-import {
-  getApprovalIcon,
-  getStatusColorClass,
-} from "../../../utils/formatters";
+import { getApprovalIcon, getStatusColorClass } from "../../../utils";
 
 interface ApprovalsListProps {
   approvals: Approval[];
