@@ -15,7 +15,8 @@ function SectionFallback({
   onRetry,
 }: FallbackProps & { sectionName?: string; onRetry?: () => void }) {
   const label = sectionName ?? "this section";
-  const detail = error?.message ?? "An unexpected error occurred.";
+  const detail =
+    error instanceof Error ? error.message : "An unexpected error occurred.";
 
   const handleRetry = () => {
     if (onRetry) {

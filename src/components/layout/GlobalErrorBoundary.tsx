@@ -7,9 +7,11 @@ interface GlobalErrorBoundaryProps {
 }
 
 function GlobalErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
-  const detail = error
-    ? `${error.name}: ${error.message}`
-    : "An unexpected error occurred while rendering the application.";
+  let detail = "An unexpected error occurred while rendering the application.";
+
+  if (error instanceof Error) {
+    detail = `${error.name}: ${error.message}`;
+  }
 
   return <ErrorPage error={detail} reset={resetErrorBoundary} />;
 }
