@@ -1,4 +1,4 @@
-import { useEffect, useState, type JSX } from "react";
+import { useMemo, useState, type JSX } from "react";
 import { TableTypes, type ProjectTable } from "../../../types";
 import { useAppSelector } from "../../../store/hooks";
 import { selectedProjectId } from "../../../store/selectors";
@@ -23,7 +23,6 @@ interface TableNode {
 export const DataLineageView = () => {
   const currentProjectId = useAppSelector(selectedProjectId);
   const [highlightedTable, setHighlightedTable] = useState<string | null>(null);
-  const [tableNodes, setTableNodes] = useState<TableNode[]>([]);
   const {
     data: relations,
     loading: relationsLoading,
@@ -37,17 +36,24 @@ export const DataLineageView = () => {
     refetch: refetchTables,
   } = useProjectTables(currentProjectId);
 
-  useEffect(() => {
-    if (!tables || tables.length === 0) {
-      setTableNodes([]);
-      return;
-    }
+  const tableNodes = useMemo(() => {
+    if (!tables) return [];
+
+    const involvedTableNames = new Set<string>();
+    relations?.forEach((relation) => {
+      involvedTableNames.add(relation.sourceTable);
+      involvedTableNames.add(relation.derivedTable);
+    });
 
     const sourceTables = tables.filter(
-      (t) => t.table_type === TableTypes.SOURCE
+      (t) =>
+        involvedTableNames.has(t.table_name) &&
+        t.table_type === TableTypes.SOURCE
     );
     const derivedTables = tables.filter(
-      (t) => t.table_type === TableTypes.DERIVED
+      (t) =>
+        involvedTableNames.has(t.table_name) &&
+        t.table_type === TableTypes.DERIVED
     );
 
     const nodes: TableNode[] = [];
@@ -78,69 +84,45 @@ export const DataLineageView = () => {
       });
     });
 
-    setTableNodes(nodes);
-  }, [tables]);
+    return nodes;
+  }, [tables, relations]);
 
-  useEffect(() => {
+  const highlightedTableNodes = useMemo(() => {
     if (!highlightedTable) {
-      setTableNodes((prev) =>
-        prev.map((node) => ({
-          ...node,
-          isHighlighted: false,
-          isUpstream: false,
-          isDownstream: false,
-        }))
-      );
-      return;
+      return tableNodes.map((node) => ({
+        ...node,
+        isHighlighted: false,
+        isUpstream: false,
+        isDownstream: false,
+      }));
     }
-
-    if (!relations) return;
 
     const upstreamTables = new Set<string>();
     const downstreamTables = new Set<string>();
 
-    relations.forEach((relation) => {
-      if (relation.targetTable === highlightedTable) {
+    relations?.forEach((relation) => {
+      if (relation.derivedTable === highlightedTable) {
         upstreamTables.add(relation.sourceTable);
       }
       if (relation.sourceTable === highlightedTable) {
-        downstreamTables.add(relation.targetTable);
+        downstreamTables.add(relation.derivedTable);
       }
     });
 
-    const findUpstream = (tableName: string, visited = new Set<string>()) => {
-      if (visited.has(tableName)) return;
-      visited.add(tableName);
-
-      relations.forEach((relation) => {
-        if (
-          relation.targetTable === tableName &&
-          !upstreamTables.has(relation.sourceTable)
-        ) {
-          upstreamTables.add(relation.sourceTable);
-          findUpstream(relation.sourceTable, visited);
-        }
-      });
-    };
-
-    findUpstream(highlightedTable);
-
-    setTableNodes((prev) =>
-      prev.map((node) => ({
-        ...node,
-        isHighlighted: node.table.table_name === highlightedTable,
-        isUpstream: upstreamTables.has(node.table.table_name),
-        isDownstream: downstreamTables.has(node.table.table_name),
-      }))
-    );
-  }, [highlightedTable, relations]);
+    return tableNodes.map((node) => ({
+      ...node,
+      isHighlighted: node.table.table_name === highlightedTable,
+      isUpstream: upstreamTables.has(node.table.table_name),
+      isDownstream: downstreamTables.has(node.table.table_name),
+    }));
+  }, [highlightedTable, relations, tableNodes]);
 
   if (relationsLoading || tablesLoading) return <DataLineageSkeleton />;
   if (relationsError)
     return <ErrorMessage message={relationsError} onRetry={refetchRelations} />;
   if (tablesError)
     return <ErrorMessage message={tablesError} onRetry={refetchTables} />;
-  if (!relations || !tables)
+  if (!relations || !tables || relations.length === 0)
     return (
       <EmptyState
         title="Data Lineage"
@@ -156,7 +138,7 @@ export const DataLineageView = () => {
             </span>
           </div>
         }
-        message="No tables available for lineage view."
+        message="No lineage defined for this project."
       />
     );
 
@@ -193,11 +175,11 @@ export const DataLineageView = () => {
     const safeRelations = relations ?? [];
 
     safeRelations.forEach((relation, index) => {
-      const sourceNode = tableNodes.find(
+      const sourceNode = highlightedTableNodes.find(
         (n) => n.table.table_name === relation.sourceTable
       );
-      const targetNode = tableNodes.find(
-        (n) => n.table.table_name === relation.targetTable
+      const targetNode = highlightedTableNodes.find(
+        (n) => n.table.table_name === relation.derivedTable
       );
 
       if (!sourceNode || !targetNode) return;
@@ -235,7 +217,7 @@ export const DataLineageView = () => {
 
   const containerHeight = Math.max(
     300,
-    Math.max(...tableNodes.map((n) => n.position.y)) + 100
+    Math.max(...highlightedTableNodes.map((n) => n.position.y)) + 100
   );
 
   return (
@@ -274,7 +256,7 @@ export const DataLineageView = () => {
           </defs>
           {renderConnections()}
         </svg>
-        {tableNodes.map((node) => (
+        {highlightedTableNodes.map((node) => (
           <div
             key={node.table.project_table_id}
             className={getTableNodeClass(node)}

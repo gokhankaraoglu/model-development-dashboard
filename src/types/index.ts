@@ -107,7 +107,7 @@ export interface DataStructure {
 
 export interface TableRelation {
   sourceTable: string;
-  targetTable: string;
+  derivedTable: string;
 }
 
 export interface TableLineage {
